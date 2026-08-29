@@ -8,7 +8,7 @@ export const site = {
   tagline: "Engenharia e Responsabilidade Técnica",
   whatsappNumber: "[NÚMERO DE WHATSAPP, ex: 5511999999999]",
   email: "[EMAIL DA EMPRESA]",
-  siteUrl: "https://www.example.com.br",
+  siteUrl: "https://www.marksart.com.br",
 } as const;
 
 /** Monta o link do WhatsApp com mensagem pré-preenchida (URL-encoded). */
