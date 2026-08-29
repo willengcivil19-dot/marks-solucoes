@@ -22,6 +22,17 @@ export function Reveal({
     const node = ref.current;
     if (!node || visible) return;
 
+    // Checagem síncrona: se o bloco já está na tela ao montar (ex.: o hero,
+    // sempre visível no primeiro carregamento), mostra direto — não depende
+    // do primeiro callback do IntersectionObserver, que em alguns navegadores
+    // mobile (Safari/iOS) pode atrasar ou nunca disparar para um elemento que
+    // já estava interseccionando no momento em que observe() foi chamado.
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
