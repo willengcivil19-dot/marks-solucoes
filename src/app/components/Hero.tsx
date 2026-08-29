@@ -40,11 +40,11 @@ export function Hero() {
       <Container className="relative py-20 text-center sm:py-28">
         <Reveal className="mx-auto flex max-w-3xl flex-col items-center">
           <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/80">
-            ART para reforma de apartamento
+            ART para qualquer tipo de reforma
           </span>
 
           <h1 className="mt-6 text-[2rem] font-bold leading-[1.15] tracking-tight text-white sm:text-[2.75rem] lg:text-[3.25rem]">
-            Seu condomínio pediu ART para a reforma?
+            Precisa de ART para sua reforma?
           </h1>
 
           <p className="mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">

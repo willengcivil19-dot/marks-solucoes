@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "Marks Soluções — ART para Reforma de Apartamento";
+export const alt = "Marks Soluções — ART para Reforma";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -48,10 +48,10 @@ export default async function Image() {
               marginBottom: 20,
             }}
           >
-            ART PARA REFORMA DE APARTAMENTO
+            ART PARA QUALQUER TIPO DE REFORMA
           </div>
           <div style={{ display: "flex", color: "#FFFFFF", fontSize: 60, fontWeight: 800, lineHeight: 1.15 }}>
-            Seu condomínio pediu ART para a reforma?
+            Precisa de ART para sua reforma?
           </div>
           <div style={{ display: "flex", color: "rgba(255,255,255,0.75)", fontSize: 28, marginTop: 24 }}>
             Análise técnica e documentação com atendimento direto pelo WhatsApp.
