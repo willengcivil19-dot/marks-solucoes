@@ -7,7 +7,7 @@ export const site = {
   companyName: "Marks Soluções",
   tagline: "Engenharia e Responsabilidade Técnica",
   whatsappNumber: "[NÚMERO DE WHATSAPP, ex: 5511999999999]",
-  email: "[EMAIL DA EMPRESA]",
+  email: "contato@marksart.com.br",
   siteUrl: "https://www.marksart.com.br",
 } as const;
 
