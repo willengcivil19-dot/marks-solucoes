@@ -43,7 +43,17 @@ export function Reveal({
       { threshold: 0.15 }
     );
     observer.observe(node);
-    return () => observer.disconnect();
+
+    // Rede de segurança: alguns navegadores mobile atrasam ou nunca disparam
+    // o primeiro callback do observer (ex.: durante o layout inicial da
+    // página, com imagem de fundo ainda carregando). Sem isso o conteúdo
+    // pode ficar permanentemente invisível — pior que nunca animar.
+    const fallback = setTimeout(() => setVisible(true), 1200);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallback);
+    };
     // Roda só na montagem: alternar `visible` não deve recriar o observer.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
