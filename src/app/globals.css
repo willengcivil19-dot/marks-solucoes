@@ -15,15 +15,26 @@ body {
 }
 
 /*
- * Fade suave da página ao carregar. Só CSS, sem JavaScript: o navegador
- * aplica o estado inicial (0%) de forma síncrona antes de pintar a tela,
- * então não existe o risco de "ficar preso invisível" que o efeito anterior
- * (fade por seção ao rolar, via IntersectionObserver) tinha em Safari/iOS.
+ * Fade + leve deslocamento ao rolar até cada seção, só em CSS (scroll-driven
+ * animation nativa do navegador, sem JavaScript/IntersectionObserver).
+ * Envolvida em @supports: em navegadores sem suporte a "animation-timeline:
+ * view()", a regra dentro do bloco simplesmente não é aplicada e o elemento
+ * fica visível normalmente — não existe estado "opacity: 0" fora do
+ * @supports, então é estruturalmente impossível o conteúdo ficar preso
+ * invisível (o bug que o efeito anterior, via JS, tinha em Safari/iOS).
  */
-@keyframes page-fade-in {
+@supports (animation-timeline: view()) {
+  .reveal-scroll {
+    animation: reveal-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 35%;
+  }
+}
+
+@keyframes reveal-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -31,12 +42,8 @@ body {
   }
 }
 
-body {
-  animation: page-fade-in 0.6s ease-out both;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  body {
+  .reveal-scroll {
     animation: none;
   }
 }

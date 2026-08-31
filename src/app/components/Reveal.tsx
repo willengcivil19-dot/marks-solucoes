@@ -1,12 +1,10 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Wrapper de layout usado nas seções do site. Chegou a ter um efeito de
- * fade-in ao entrar na viewport, removido por causar conteúdo permanentemente
- * invisível em alguns navegadores mobile (Safari/iOS) — confirmado em
- * múltiplos aparelhos reais mesmo com salvaguardas (checagem síncrona +
- * timeout de segurança). Mantido como componente simples para não exigir
- * alterar todos os usos existentes.
+ * Fade + leve deslocamento ao rolar até o elemento, feito só em CSS
+ * ("animation-timeline: view()", ver globals.css). Sem JavaScript: nenhum
+ * risco do bug que a versão anterior (via IntersectionObserver) tinha em
+ * Safari/iOS, onde o conteúdo podia ficar preso invisível.
  */
 export function Reveal({
   children,
@@ -16,5 +14,5 @@ export function Reveal({
   className?: string;
   delay?: number;
 }) {
-  return <div className={cn(className)}>{children}</div>;
+  return <div className={cn("reveal-scroll", className)}>{children}</div>;
 }
