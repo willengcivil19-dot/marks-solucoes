@@ -1,18 +1,23 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Fade + leve deslocamento ao rolar até o elemento, feito só em CSS
- * ("animation-timeline: view()", ver globals.css). Sem JavaScript: nenhum
- * risco do bug que a versão anterior (via IntersectionObserver) tinha em
- * Safari/iOS, onde o conteúdo podia ficar preso invisível.
+ * Fade + leve deslocamento ao carregar a página, escalonado por `delay`
+ * (ver "reveal-onload" em globals.css). CSS puro, ligado ao tempo — nunca
+ * ao scroll ou a um observer — para não repetir o bug de conteúdo preso
+ * invisível que a versão anterior (via JavaScript) teve em Safari/iOS.
  */
 export function Reveal({
   children,
   className,
+  delay = 0,
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
 }) {
-  return <div className={cn("reveal-scroll", className)}>{children}</div>;
+  return (
+    <div className={cn("reveal-onload", className)} style={{ animationDelay: `${delay}ms` }}>
+      {children}
+    </div>
+  );
 }

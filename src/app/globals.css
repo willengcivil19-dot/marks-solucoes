@@ -15,26 +15,22 @@ body {
 }
 
 /*
- * Fade + leve deslocamento ao rolar até cada seção, só em CSS (scroll-driven
- * animation nativa do navegador, sem JavaScript/IntersectionObserver).
- * Envolvida em @supports: em navegadores sem suporte a "animation-timeline:
- * view()", a regra dentro do bloco simplesmente não é aplicada e o elemento
- * fica visível normalmente — não existe estado "opacity: 0" fora do
- * @supports, então é estruturalmente impossível o conteúdo ficar preso
- * invisível (o bug que o efeito anterior, via JS, tinha em Safari/iOS).
+ * Fade + leve deslocamento ao carregar a página, escalonado por seção
+ * (animation-delay). CSS puro, sem JavaScript e sem depender de nenhum
+ * recurso novo do navegador (compatível com qualquer Safari/iOS): a
+ * animação é ligada ao tempo, não a um evento — o navegador sempre
+ * termina a transição sozinho, então é estruturalmente impossível o
+ * conteúdo ficar preso invisível (o bug que a versão via JavaScript,
+ * baseada em IntersectionObserver, teve em Safari/iOS).
  */
-@supports (animation-timeline: view()) {
-  .reveal-scroll {
-    animation: reveal-in linear both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 35%;
-  }
+.reveal-onload {
+  animation: reveal-in 0.7s ease-out both;
 }
 
 @keyframes reveal-in {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -43,7 +39,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-scroll {
+  .reveal-onload {
     animation: none;
   }
 }
