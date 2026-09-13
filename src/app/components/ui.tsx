@@ -85,6 +85,30 @@ export function TextLink({ href, children, className, eventName }: CTAProps) {
   );
 }
 
+export function WhatsAppTextLink({
+  href,
+  children,
+  className,
+  eventName = "whatsapp_click_footer",
+}: {
+  href: string;
+  children: ReactNode;
+  className?: string;
+  eventName?: string;
+}) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => trackEvent(eventName)}
+      className={cn("font-semibold text-[#2563EB] hover:underline", className)}
+    >
+      {children}
+    </Link>
+  );
+}
+
 export function EmailLink({ email, className }: { email: string; className?: string }) {
   return (
     <Link

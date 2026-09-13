@@ -31,6 +31,17 @@ export const whatsappMessages = {
   form: "Olá! Enviei uma solicitação pelo formulário do site e gostaria de continuar por aqui.",
 } as const;
 
+/** Formata o WhatsApp para exibição (ex.: "+55 (11) 99191-2409"). */
+export function formatWhatsappDisplay(): string {
+  const digits = site.whatsappNumber.replace(/\D/g, "");
+  const country = digits.slice(0, 2);
+  const ddd = digits.slice(2, 4);
+  const rest = digits.slice(4);
+  if (rest.length === 9) return `+${country} (${ddd}) ${rest.slice(0, 5)}-${rest.slice(5)}`;
+  if (rest.length === 8) return `+${country} (${ddd}) ${rest.slice(0, 4)}-${rest.slice(4)}`;
+  return site.whatsappNumber;
+}
+
 /** Mensagem contextual por serviço/intenção, usada nos chips de "o que você pretende fazer". */
 export function serviceWhatsappMessage(service: string): string {
   return `Olá, gostaria de saber sobre ART para ${service}.`;

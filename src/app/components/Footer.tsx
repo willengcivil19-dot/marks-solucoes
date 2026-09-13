@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail } from "lucide-react";
-import { navLinks, site } from "../config";
-import { Container, EmailLink } from "./ui";
+import { formatWhatsappDisplay, navLinks, site, whatsappLink, whatsappMessages } from "../config";
+import { Container, EmailLink, WhatsAppTextLink } from "./ui";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function Footer() {
@@ -28,7 +28,9 @@ export function Footer() {
             <ul className="mt-3 space-y-2.5 text-sm">
               <li className="flex items-center gap-2">
                 <WhatsAppIcon className="h-4 w-4 shrink-0" />
-                {site.whatsappNumber}
+                <WhatsAppTextLink href={whatsappLink(whatsappMessages.default)} className="text-white/70 hover:text-white">
+                  {formatWhatsappDisplay()}
+                </WhatsAppTextLink>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0" />
