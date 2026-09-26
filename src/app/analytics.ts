@@ -16,7 +16,7 @@ declare global {
 }
 
 /** Rótulo da ação de conversão "Contato" no Google Ads (clique no WhatsApp/e-mail). */
-const GOOGLE_ADS_CONTACT_CONVERSION = "AW-608825160/7LmaCMft0OocEMjep6IC";
+const GOOGLE_ADS_CONTACT_CONVERSION = "AW-18475997610/u178COy9poYdEKqzhepE";
 
 export function trackEvent(eventName: string, params: TrackParams = {}) {
   if (typeof window === "undefined") return;
