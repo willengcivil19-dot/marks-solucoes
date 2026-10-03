@@ -15,7 +15,7 @@ declare global {
   }
 }
 
-/** Rótulo da ação de conversão "Contato" no Google Ads (clique no WhatsApp/e-mail). */
+/** Rótulo da ação de conversão "Contato" no Google Ads (clique no WhatsApp/e-mail e envio do formulário). */
 const GOOGLE_ADS_CONTACT_CONVERSION = "AW-18475997610/u178COy9poYdEKqzhepE";
 
 export function trackEvent(eventName: string, params: TrackParams = {}) {
@@ -28,7 +28,7 @@ export function trackEvent(eventName: string, params: TrackParams = {}) {
     window.fbq("trackCustom", eventName, params);
   }
 
-  if ((eventName.startsWith("whatsapp_click") || eventName === "email_click") && typeof window.gtag === "function") {
+  if ((eventName.startsWith("whatsapp_click") || eventName === "email_click" || eventName === "form_submit") && typeof window.gtag === "function") {
     window.gtag("event", "conversion", { send_to: GOOGLE_ADS_CONTACT_CONVERSION });
   }
 }

@@ -5,6 +5,7 @@
  */
 export const site = {
   companyName: "Marks Soluções",
+  cnpj: "40.597.219/0001-34",
   tagline: "Engenharia e Responsabilidade Técnica",
   whatsappNumber: "5511991912409",
   email: "contato@marksart.com.br",

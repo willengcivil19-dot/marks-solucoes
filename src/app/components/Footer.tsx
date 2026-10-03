@@ -63,7 +63,7 @@ export function Footer() {
         <div className="mt-12 border-t border-white/10 pt-6 text-xs text-white/40">
           <p>Os serviços estão sujeitos à análise técnica, disponibilidade e atribuições profissionais aplicáveis.</p>
           <p className="mt-2">
-            © {new Date().getFullYear()} {site.companyName}. Todos os direitos reservados.
+            © {new Date().getFullYear()} {site.companyName} — CNPJ {site.cnpj}. Todos os direitos reservados.
           </p>
         </div>
       </Container>
