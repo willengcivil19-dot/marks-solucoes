@@ -32,7 +32,7 @@ export const whatsappMessages = {
   form: "Olá! Enviei uma solicitação pelo formulário do site e gostaria de continuar por aqui.",
 } as const;
 
-/** Formata o WhatsApp para exibição (ex.: "+55 (11) 99191-2409"). */
+/** Formata o WhatsApp para exibição (ex.: "+55 (11) 92795-9380"). */
 export function formatWhatsappDisplay(): string {
   const digits = site.whatsappNumber.replace(/\D/g, "");
   const country = digits.slice(0, 2);
