@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { whatsappLink, whatsappMessages } from "../config";
-import { Container, SectionHeading, WhatsAppButton } from "./ui";
+import { Container, SectionHeading, WhatsAppButton, WhatsAppTextLink } from "./ui";
 import { Reveal } from "./Reveal";
 
 const FAQ_ITEMS = [
@@ -38,6 +38,11 @@ const FAQ_ITEMS = [
   },
 ];
 
+/** Mensagem pré-preenchida que leva junto a pergunta lida pelo visitante. */
+function faqWhatsappMessage(question: string): string {
+  return `Olá! Li no site a dúvida "${question}" e quero saber como fica no meu caso. Posso enviar fotos da reforma?`;
+}
+
 export function FAQ() {
   return (
     <section id="faq" className="bg-[#F8FAFC] py-16 sm:py-20">
@@ -55,6 +60,15 @@ export function FAQ() {
                   <ChevronDown className="h-4 w-4 shrink-0 text-[#2563EB] transition-transform group-open:rotate-180" />
                 </summary>
                 <p className="mt-3 text-sm leading-relaxed text-[#475569]">{item.a}</p>
+                <p className="mt-3 text-sm text-[#475569]">
+                  Não sabe se é o seu caso?{" "}
+                  <WhatsAppTextLink
+                    href={whatsappLink(faqWhatsappMessage(item.q))}
+                    eventName="whatsapp_click_faq_item"
+                  >
+                    Envie uma foto da reforma pelo WhatsApp e avaliamos para você →
+                  </WhatsAppTextLink>
+                </p>
               </details>
             </Reveal>
           ))}
