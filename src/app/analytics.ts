@@ -12,6 +12,7 @@ declare global {
     dataLayer?: unknown[];
     fbq?: (...args: unknown[]) => void;
     gtag?: (...args: unknown[]) => void;
+    clarity?: (...args: unknown[]) => void;
   }
 }
 
@@ -23,6 +24,11 @@ export function trackEvent(eventName: string, params: TrackParams = {}) {
 
   window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push({ event: eventName, ...params });
+
+  // Marca a gravação do Microsoft Clarity para filtrar visitas que clicaram em WhatsApp, e-mail ou formulário.
+  if (typeof window.clarity === "function") {
+    window.clarity("event", eventName);
+  }
 
   if (typeof window.fbq === "function") {
     window.fbq("trackCustom", eventName, params);

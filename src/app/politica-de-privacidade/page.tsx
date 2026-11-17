@@ -28,6 +28,11 @@ export default function PrivacyPolicyPage() {
           e-mail {site.email} ou pelo WhatsApp informado no rodapé deste site.
         </p>
         <p>Este site não utiliza cookies de rastreamento além dos necessários para métricas de audiência e campanhas de marketing.</p>
+        <p>
+          Para melhorar o site, utilizamos o Google Ads (medição de campanhas) e o Microsoft Clarity, que registra de forma
+          anônima como as páginas são navegadas (cliques e rolagem). Os campos digitados em formulários são mascarados e não
+          são gravados.
+        </p>
       </div>
 
       <Link href="/" className="mt-10 inline-block text-sm font-semibold text-[#2563EB] hover:underline">
