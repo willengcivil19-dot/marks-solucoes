@@ -10,9 +10,19 @@ export function WhatsAppFloating() {
   const [showBubble, setShowBubble] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
+  // O balão só aparece depois que o visitante rolou além do topo ou após 20 segundos,
+  // para não cobrir o título e os botões principais logo na chegada (principalmente no celular).
   useEffect(() => {
-    const timer = setTimeout(() => setShowBubble(true), 4000);
-    return () => clearTimeout(timer);
+    const show = () => setShowBubble(true);
+    const timer = setTimeout(show, 20000);
+    const onScroll = () => {
+      if (window.scrollY > window.innerHeight * 0.8) show();
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const href = whatsappLink(whatsappMessages.floating);

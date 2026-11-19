@@ -1,14 +1,14 @@
 import Image from "next/image";
-import { whatsappLink, whatsappMessages } from "../config";
+import { site, whatsappLink, whatsappMessages } from "../config";
 import { WhatsAppButton, OutlineButton, Container } from "./ui";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { Reveal } from "./Reveal";
 
 const TRUST_POINTS = [
-  "Atendimento rápido",
-  "Engenheiro habilitado",
-  "Atendimento pelo WhatsApp",
-  "Residencial e comercial",
+  "Engenheiro habilitado no CREA-SP",
+  "Orçamento sem compromisso",
+  "Resposta rápida pelo WhatsApp",
+  "São Paulo e Grande SP",
 ];
 
 export function Hero() {
@@ -47,15 +47,15 @@ export function Hero() {
             Precisa de ART para sua reforma?
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
-            Cuidamos da análise técnica e da documentação necessária para sua reforma, com atendimento direto e
-            orientação de profissional habilitado.
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+            Envie fotos da sua reforma pelo WhatsApp e receba a orientação técnica e o orçamento sem compromisso.
+            Atendimento direto com engenheiro, sem intermediários.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <WhatsAppButton href={whatsappLink(whatsappMessages.default)} size="lg" eventName="whatsapp_click_hero">
+            <WhatsAppButton href={whatsappLink(whatsappMessages.heroQuote)} size="lg" eventName="whatsapp_click_hero">
               <WhatsAppIcon className="h-5 w-5" />
-              Solicitar ART pelo WhatsApp
+              Pedir orçamento pelo WhatsApp
             </WhatsAppButton>
             <OutlineButton
               href="#faq"
@@ -68,7 +68,7 @@ export function Hero() {
 
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             {TRUST_POINTS.map((point) => (
-              <li key={point} className="flex items-center gap-1.5 text-xs font-medium text-white/60 sm:text-sm">
+              <li key={point} className="flex items-center gap-1.5 text-xs font-medium text-white/85 sm:text-sm">
                 <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 shrink-0 text-[#4C86FF]" fill="currentColor">
                   <path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.4 7.4a1 1 0 0 1-1.4 0L3.3 9.5a1 1 0 1 1 1.4-1.4l3.6 3.6 6.7-6.7a1 1 0 0 1 1.4 0Z" />
                 </svg>
@@ -76,6 +76,10 @@ export function Hero() {
               </li>
             ))}
           </ul>
+
+          <p className="mt-5 text-xs text-white/60">
+            {site.companyName} · CNPJ {site.cnpj}
+          </p>
         </Reveal>
       </Container>
     </section>

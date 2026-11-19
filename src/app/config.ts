@@ -21,6 +21,7 @@ export function whatsappLink(message: string): string {
 
 export const whatsappMessages = {
   default: "Olá! Preciso de informações para emissão de ART para uma reforma. Poderia me orientar?",
+  heroQuote: "Olá! Gostaria de um orçamento de ART para a minha reforma. Posso enviar fotos?",
   floating: "Olá! Encontrei vocês pelo site e gostaria de informações sobre ART para minha reforma.",
   checkReform: "Olá! Quero verificar se minha reforma precisa de ART. Posso te contar os detalhes?",
   services: "Olá! Vi os serviços no site e gostaria de consultar o meu caso.",
