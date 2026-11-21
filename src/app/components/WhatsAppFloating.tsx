@@ -10,19 +10,12 @@ export function WhatsAppFloating() {
   const [showBubble, setShowBubble] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
-  // O balão só aparece depois que o visitante rolou além do topo ou após 20 segundos,
-  // para não cobrir o título e os botões principais logo na chegada (principalmente no celular).
+  // O balão aparece só por tempo (25 s), nunca logo na chegada, venha o visitante do topo
+  // ou do meio da página. No celular ele fica oculto (classe "hidden sm:block" abaixo),
+  // porque a barra fixa e o botão redondo já oferecem o WhatsApp e o balão cobria o conteúdo.
   useEffect(() => {
-    const show = () => setShowBubble(true);
-    const timer = setTimeout(show, 20000);
-    const onScroll = () => {
-      if (window.scrollY > window.innerHeight * 0.8) show();
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", onScroll);
-    };
+    const timer = setTimeout(() => setShowBubble(true), 25000);
+    return () => clearTimeout(timer);
   }, []);
 
   const href = whatsappLink(whatsappMessages.floating);
@@ -30,7 +23,7 @@ export function WhatsAppFloating() {
   return (
     <div className="fixed bottom-20 right-5 z-40 flex flex-col items-end gap-3 lg:bottom-6">
       {showBubble && !dismissed && (
-        <div className="relative max-w-[15rem] rounded-2xl rounded-br-sm bg-white p-3.5 pr-8 text-sm text-[#0B1F33] shadow-xl">
+        <div className="relative hidden max-w-[15rem] rounded-2xl rounded-br-sm bg-white p-3.5 pr-8 text-sm text-[#0B1F33] shadow-xl sm:block">
           <button
             type="button"
             aria-label="Fechar mensagem"
